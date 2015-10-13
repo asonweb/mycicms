@@ -107,7 +107,6 @@ class Base_model extends CI_Model{
 	public function delete($id){
 		$this->db->where($this->pk, $id);
 		$result = $this->db->delete($this->table);
-		
 		return $result;
 	}
 	

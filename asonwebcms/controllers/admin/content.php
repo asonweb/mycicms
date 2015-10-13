@@ -166,9 +166,10 @@ class Content extends AdminController{
 				}
 			}elseif (  $this->current['trash'] =='deleteain' ){
 				//批量从数据库删除
+				
 				if( $this->input->post('id') ){
 					foreach ( $this->input->post('id') as $ids ){
-						$this->model->delete( $ids );
+						$this->model->delete( intval($ids) );
 					}
 				}else{
 					//$this->db->delete( 'contents',array('status'=>0));
