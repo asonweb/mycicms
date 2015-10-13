@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title>智能后台管理-后台管理</title>
+<link rel="stylesheet" href="<?php echo theme_url() ?>css/pintuer.css">
+<link rel="stylesheet" href="<?php echo theme_url() ?>css/admin.css">
+<link rel="stylesheet"
+	href="<?php echo base_url() ?>statics/css/jquery-ui.css">
+<script src="<?php echo base_url() ?>statics/js/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>statics/js/jquery-ui.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url()?>statics/js/jquery-ui-timepicker.js"></script>
+<script src="<?php echo theme_url() ?>js/pintuer.js"></script>
+<script src="<?php echo theme_url() ?>js/respond.js"></script>
+<script src="<?php echo theme_url() ?>js/admin.js"></script>
+<?php echo link_tag('favicon.ico', 'shortcut icon', 'image/ico'); ?>
+<?php echo link_tag('favicon.ico', 'shortcut icon', 'bookmark/ico'); ?>
+</head>
+
+<body>
+	<div class="lefter">
+		<div class="logo">
+			<a href="<?php echo site_url()?>" target="_blank">
+				<img src="<?php echo theme_url() ?>images/logo.png" alt="后台管理系统"
+					width="160" />
+			</a>
+		</div>
+	</div>
+	<div class="righter nav-navicon" id="admin-nav">
+		<div class="mainer">
+			<div class="admin-navbar">
+				<span class="float-right">
+					<a class="button button-little bg-main"
+						href="<?php echo base_url(); ?>" target="_blank">前台首页</a>
+					<a class="button button-little bg-yellow"
+						href="<?php echo site_url($action_group.'auth/logout') ?>">注销登录</a>
+				</span>
+				<ul class="nav nav-inline admin-nav">
+					<li>
+						<a href="<?php echo site_url('admin/index')?>" class="icon-home">
+							开始</a>
+						<ul>
+							<li>
+								<a href="<?php echo site_url('admin/setting')?>">系统设置</a>
+							</li>
+							<li>
+								<a href="<?php echo site_url('admin/content')?>">内容管理</a>
+							</li>
+							<li>
+								<a href="<?php echo site_url('admin/system_check') ?>">工具</a>
+							</li>
+							<li class="active">
+								<a href="<?php echo site_url('admin/user') ?>">会员管理</a>
+							</li>
+							
+						</ul>
+					</li>
+					<li>
+						<a href="<?php echo site_url('admin/setting')?>" class="icon-cog">
+							系统</a>
+						<ul>
+							<li>
+								<a href="<?php echo site_url('admin/setting')?>">站点设置</a>
+							</li>
+							<li>
+								<a href="<?php echo site_url('admin/setting/upload')?>">上传设置</a>
+							</li>
+							<li>
+								<a href="<?php echo site_url('admin/setting/email')?>">邮件设置</a>
+							</li>
+							<li>
+								<a href="<?php echo site_url('admin/wexin')?>">微信接口</a>
+							</li>
+							
+						</ul>
+					</li>
+					<li>
+						<a href="<?php echo site_url('admin/content')?>"
+							class="icon-file-text"> 内容</a>
+
+						<ul>
+							<?php foreach( $subnavs as $nav ) : ?>
+							<li class="active">
+								<a href="<?php echo site_url('admin/content/index/'.$nav['slugname'])?>">
+									<?php echo $nav['name'] ?>
+								</a>
+								<ul>
+									<li>
+										<a
+											href="<?php echo site_url('admin/content/add/'.$nav['slugname'])?>">添加内容</a>
+									</li>
+									<li class="active">
+										<a
+											href="<?php echo site_url('admin/content/index/'.$nav['slugname'])?>">内容管理</a>
+									</li>
+									<li>
+										<a
+											href="<?php echo site_url('admin/category/index/'.$nav['slugname'])?>">分类设置</a>
+									</li>
+									<li>
+										<a
+											href="<?php echo site_url('admin/content/index/'.$nav['slugname'].'?status=trash')?>">回收站</a>
+									</li>
+								</ul>
+								<?php endforeach; ?>
+							</li>
+						</ul>
+					</li>
+					<li>
+								<a href="<?php echo site_url('admin/comment')?>">留言</a>
+								<ul>
+								<li><a href="<?php echo site_url('admin/comment')?>">所有留言</a></li>
+								</ul>
+							</li>
+					<li>
+						<a href="<?php echo site_url('admin/order/index'); ?>"
+							class="icon-shopping-cart"> 订单</a>
+						<ul>
+							<li>
+								<a href="<?php echo site_url('admin/order/index')?>">所有订单</a>
+							</li>
+							<li>
+								<a href="<?php echo site_url('admin/order/index?status=1')?>">待确认订单</a>
+							</li>
+							<li>
+								<a href="<?php echo site_url('admin/order/index?status=2')?>">已确认订单</a>
+							</li>
+							<li>
+								<a href="<?php echo site_url('admin/order/index?status=3')?>">已发货订单</a>
+							</li>
+							<li>
+								<a href="<?php echo site_url('admin/order/index?status=4')?>">已完成订单</a>
+							</li>
+							<li>
+								<a href="<?php echo site_url('admin/order/index?status=0')?>">已去掉订单</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+								<a href="<?php echo site_url('admin/cms/lists')?>">内容类型管理</a>
+								<ul>
+								<li><a href="<?php echo site_url('admin/cms/lists')?>">内容类型</a></li>
+								<li><a href="<?php echo site_url('admin/field/lists')?>">扩展字段</a></li>
+								</ul>
+							</li>
+					<li>
+						<a href="<?php echo site_url('admin/user') ?>" class="icon-user">
+							用户</a>
+						<ul>
+							<li>
+								<a href="<?php echo site_url('admin/user')?>">所有用户</a>
+							</li>
+							<li>
+								<a href="<?php echo site_url('admin/user?status=0')?>">禁用用户</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="<?php echo site_url('admin/system_check') ?>">工具</a>
+					</li>
+				</ul>
+			</div>
+			<div class="admin-bread">
+				<span>您好，admin，欢迎您的光临。</span>
+				<ul class="bread">
+					<li>
+						<a href="index.html" class="icon-home"> 开始</a>
+					</li>
+					<li>后台首页</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>

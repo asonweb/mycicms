@@ -1,0 +1,25 @@
+
+
+<div class="admin">
+	<form method="post" action="">
+    <div class="panel admin-panel">
+    	<div class="panel-head"><strong>添加</strong></div>
+        <div class="padding border-bottom">
+            <input type="button" class="button button-small checkall" name="checkall" checkfor="id[]" value="全选" />
+        </div>
+        <?php echo $body; ?>
+    </div>
+    
+    <input class="button bg-main" type="submit" value="提交" style="visibility: hidden;" />
+    </form>
+    <br />
+</div>
+
+<script>
+$(function(){
+	$('#cat').change(function(){
+		$('form').attr('action',"<?php echo site_url('admin/content/update_cat/'.$name['slugname']) ?>");
+		$('form').submit();
+	})
+})
+</script>

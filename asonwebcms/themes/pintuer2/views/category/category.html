@@ -1,0 +1,14 @@
+<div class="admin">
+	<form method="post" name="myform" id="myform">
+	<p class="bg"></p>
+    <div class="panel admin-panel">
+    	<div class="panel-head"><strong>分类管理</strong></div>
+        <div class="padding border-bottom">
+            <input type="button" class="button button-small checkall" name="checkall" checkfor="id[]" value="全选" />
+            <a href="<?php echo site_url('admin/category/form/'.$name['slugname']) ?>" class="button button-small border-green">添加分类</a>
+        </div>
+        <?php echo $body; ?>
+    </div>
+    </form>
+    <br />
+</div>
