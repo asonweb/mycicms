@@ -144,5 +144,9 @@ class Content_model extends Base_model{
 		$this->pagination->initialize($pageconfig);
 		return $this->pagination->create_linksshow();
 	}
+	
+	function after_create(){}
+	
+	function before_create($data){}
 }
 

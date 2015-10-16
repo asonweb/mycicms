@@ -103,6 +103,12 @@
 										<a
 											href="<?php echo site_url('admin/category/index/'.$nav['slugname'])?>">分类设置</a>
 									</li>
+									<?php if($nav['slugname'] == 'product'): ?>
+									<li>
+										<a
+											href="<?php echo site_url('admin/product/import/'.$nav['slugname'])?>">批量上传产品</a>
+									</li>
+									<?php endif; ?>
 									<li>
 										<a
 											href="<?php echo site_url('admin/content/index/'.$nav['slugname'].'?status=trash')?>">回收站</a>

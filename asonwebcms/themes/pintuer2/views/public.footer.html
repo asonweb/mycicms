@@ -1,8 +1,33 @@
-
 <script>
 $(function(){
+	var m = '<?php echo $this->uri->rsegment(1) ?>';
+	var c = '<?php echo $this->uri->rsegment(2) ?>';
+	var type = '<?php echo $this->uri->rsegment(3) ?>';
+	if( m=='product' || m=='product_category' || m=='factory') m ='product';
 	
+	if( m=='shipping' || m=='payment') m ='system';
+	
+	m = "admin/"+m;
+	//console.log(m);
+	//一级菜单
+	$('.admin-nav > li > a').each(function(){
+		var href= $(this).attr('href');
+		if( href.indexOf(m) !='-1'){
+			$(this).parent().addClass('active');
+			var height = $(window).height();
+			$('.admin-nav >.active >ul').css('height', height - 103 +'px');
+		}
+	})
+	//左侧菜单
+	$('.admin-nav ul a').each(function(){
+		if( window.location.href == $(this).attr('href')) {
+			$(this).addClass('active');
+		}
+	})
 })
 </script>
+<style>
+.admin-nav li li a.active{ color:#f60; font-weight:bold;}
+</style>
 </body>
 </html>

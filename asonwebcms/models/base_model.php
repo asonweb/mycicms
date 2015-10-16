@@ -62,6 +62,7 @@ class Base_model extends CI_Model{
 			$this->before_create($data);
 			$this->db->insert($this->table, $data);
 			$insert_id = $this->db->insert_id();
+			
 			$this->after_create();
 			return $insert_id;
 		}
